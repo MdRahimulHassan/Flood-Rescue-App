@@ -1,6 +1,5 @@
-// main.dart
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart'; // Import the HomeScreen
+import 'screens/WelcomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flood Rescue App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: HomeScreen(), // Set HomeScreen as the initial screen
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.purple),
+      home: const WelcomePage(),
     );
   }
 }
