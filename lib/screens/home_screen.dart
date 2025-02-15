@@ -1,51 +1,53 @@
-// screens/home_screen.dart
 import 'package:flutter/material.dart';
-import 'rescue_request_screen.dart'; // Import RescueRequestScreen
-import 'emergency_contacts_screen.dart'; // Import EmergencyContactsScreen
-import 'flood_alerts_screen.dart'; // Import FloodAlertsScreen
+import 'rescue_request_screen.dart';
+import 'emergency_contacts_screen.dart';
+import 'flood_alerts_screen.dart';
+import 'sign_in_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flood Rescue App'),
+        title: const Text('Flood Rescue App'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const SignInScreen()),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () {
-                // Navigate to RescueRequestScreen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RescueRequestScreen()),
-                );
-              },
-              child: Text('Request Rescue'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const RescueRequestScreen()),
+              ),
+              child: const Text('Request Rescue'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Navigate to EmergencyContactsScreen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EmergencyContactsScreen()),
-                );
-              },
-              child: Text('Emergency Contacts'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const EmergencyContactsScreen()),
+              ),
+              child: const Text('Emergency Contacts'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Navigate to FloodAlertsScreen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FloodAlertsScreen()),
-                );
-              },
-              child: Text('Flood Alerts'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FloodAlertsScreen()),
+              ),
+              child: const Text('Flood Alerts'),
             ),
           ],
         ),

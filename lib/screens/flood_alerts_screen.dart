@@ -1,29 +1,27 @@
-// screens/flood_alerts_screen.dart
 import 'package:flutter/material.dart';
-import '../services/notification_service.dart'; // Import NotificationService
+import '../services/notification_service.dart';
 
 class FloodAlertsScreen extends StatelessWidget {
-  final NotificationService _notificationService = NotificationService();
-
-  Future<void> _sendFloodAlert() async {
-    // Show a flood alert notification
-    await _notificationService.showNotification(
-      'Flood Alert',
-      'A flood warning has been issued in your area.',
-    );
-    print('Flood alert notification sent');
-  }
+  const FloodAlertsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final NotificationService notificationService = NotificationService();
+
+    Future<void> _sendAlert() async {
+      await notificationService.showNotification(
+        'Flood Alert',
+        'Warning issued in your area',
+      );
+      print('Alert sent');
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flood Alerts'),
-      ),
+      appBar: AppBar(title: const Text('Flood Alerts')),
       body: Center(
         child: ElevatedButton(
-          onPressed: _sendFloodAlert,
-          child: Text('Send Flood Alert'),
+          onPressed: _sendAlert,
+          child: const Text('Send Alert'),
         ),
       ),
     );
